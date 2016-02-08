@@ -1,0 +1,26 @@
+Password: <%= text_field_tag "password" %>
+Text: <%= text_field_tag "plaintext", nil, maxlength: 1000 %>
+
+<%= form_for @note, url: { action: :create } do |f| %>
+  <%= f.text_field :text, maxlength: 2000, hidden: true %><br />
+
+  <%= f.submit %>
+<% end %>
+
+<script>
+(function () {
+
+var plaintext = $("#plaintext");
+var password = $("#password");
+
+var noteText = $("#note_text");
+
+var update = function () {
+  noteText.val(sjcl.encrypt(password.val(), plaintext.val()))
+}
+
+plaintext.on("input", update);
+password.on("input", update);
+
+})();
+</script>

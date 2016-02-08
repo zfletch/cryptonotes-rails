@@ -1,0 +1,38 @@
+<% if @note %>
+  Password: <%= text_field_tag "password" %>
+
+  <div id="encryptedtext" style="display: none;">
+    <%= @note.text %>
+  </div>
+
+  <div id="plaintext"></div>
+<% end %>
+
+<script>
+(function () {
+
+var encryptedtext = $("#encryptedtext");
+var password = $("#password");
+var plaintext = $("#plaintext");
+
+var decrypt = function () {
+  var text;
+  var success = false;
+
+  try {
+    text = sjcl.decrypt(password.val(), encryptedtext.text());
+
+    success = true;
+  } catch (e) {
+  }
+
+  if (success) {
+    plaintext.text(text);
+  }
+}
+
+password.on("input", decrypt);
+
+})();
+
+</script>
