@@ -1,4 +1,4 @@
-Password: <%= text_field_tag "password" %>
+Password: <%= text_field_tag "password" %><br>
 Text: <%= text_field_tag "plaintext", nil, maxlength: 1000 %>
 
 <%= form_for @note, url: { action: :create } do |f| %>

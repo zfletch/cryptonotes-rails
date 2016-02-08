@@ -1,1 +1,16 @@
-hello world
+Key: <%= text_field_tag "key" %>
+<button id="go">Go</button>
+
+<script>
+(function () {
+  var path = '/notes/';
+
+  var gobutton = $("#go");
+  var key = $("#key");
+
+  gobutton.on("click", function () {
+    window.location = path + key.val();
+  });
+})();
+</script>
+

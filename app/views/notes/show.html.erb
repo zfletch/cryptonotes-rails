@@ -1,4 +1,5 @@
 <% if @note %>
+  Link: <%= link_to note_url(@note.uuid), note_path(@note.uuid) %><br>
   Password: <%= text_field_tag "password" %>
 
   <div id="encryptedtext" style="display: none;">
@@ -6,6 +7,8 @@
   </div>
 
   <div id="plaintext"></div>
+<% else %>
+  No note found
 <% end %>
 
 <script>

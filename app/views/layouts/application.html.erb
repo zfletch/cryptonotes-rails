@@ -8,7 +8,14 @@
 </head>
 <body>
 
+<h2>Cryptonotes</h2>
+
 <%= yield %>
+
+<br>
+<hr>
+Create a <%= link_to 'New Note', new_note_path %><br>
+Go to an <%= link_to 'Existing Note', root_path %>
 
 </body>
 </html>
