@@ -1,14 +1,35 @@
 <% if @note %>
-  Link: <%= link_to note_url(@note.uuid), note_path(@note.uuid) %><br>
-  Password: <%= text_field_tag "password" %>
+  <div class="row text-center">
+    <h1>Enter the Password to Show the Note</h1>
+  </div>
+  <br>
+  <div class="row">
+    <input type="password" class="form-control" id="password" placeholder="Password">
+  </div>
+  <br>
 
   <div id="encryptedtext" style="display: none;">
-    <%= @note.text %>
+      <%= @note.text %>
   </div>
 
-  <div id="plaintext"></div>
+  <div id="plaintext" class="row jumbotron lead"></div>
+
+  <div class="row">
+    <strong>Link: </strong>
+    <%= link_to note_url(@note.uuid), note_path(@note.uuid) %><br>
+  </div>
+
+  <div class="row">
+    <strong>Key: </strong>
+    <%= @note.uuid %>
+  </div>
 <% else %>
-  No note found
+  <div class="row text-center">
+    <h1>Couldn't Find Your Note</h1>
+    <p class="lead">
+    There is no note in the system with key <strong><%= params[:id] %></strong>.
+    </p>
+  </div>
 <% end %>
 
 <script>
@@ -27,6 +48,7 @@ var decrypt = function () {
 
     success = true;
   } catch (e) {
+    plaintext.text('');
   }
 
   if (success) {

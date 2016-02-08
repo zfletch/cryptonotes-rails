@@ -2,20 +2,54 @@
 <html>
 <head>
   <title>Cryptonotes</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<h2>Cryptonotes</h2>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Cryptonotes", root_path, class: "navbar-brand" %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class=<%= current_page?(root_path) ? "active" : "" %>>
+        <%= link_to 'Home', root_path %>
+      </li>
+      <li class=<%= current_page?(new_note_path) ? "active" : "" %>>
+        <%= link_to 'New Note', new_note_path %>
+      </li>
+    </ul>
 
-<%= yield %>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" id="key" placeholder="Key">
+      </div>
+      <button class="btn btn-default" id="go">Find</button>
+    </form>
+  </div>
+</nav>
 
-<br>
-<hr>
-Create a <%= link_to 'New Note', new_note_path %><br>
-Go to an <%= link_to 'Existing Note', root_path %>
+<script>
+(function () {
+  var path = '/notes/';
+
+  var gobutton = $("#go");
+  var key = $("#key");
+
+  gobutton.on("click", function (e) {
+    e.preventDefault();
+    if (key.val() !== "") {
+      window.location = path + key.val();
+    }
+  });
+})();
+</script>
+
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>
