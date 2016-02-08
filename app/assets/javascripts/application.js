@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//
+// Bower packages
+//= require sjcl/sjcl
+//
 //= require_tree .
