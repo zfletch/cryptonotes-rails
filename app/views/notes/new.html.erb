@@ -1,6 +1,17 @@
+<% if @note.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+      <% @note.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="row text-center">
   <h1>Create a New Note</h1>
 </div>
+
 <br>
 <div class="row">
   <input type="password" class="form-control" id="password" placeholder="Password">
