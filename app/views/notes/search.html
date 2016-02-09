@@ -1,0 +1,25 @@
+<div class="text-center">
+  <h1>Enter Key</h1>
+
+  <div class="form-group">
+    <input type="text" class="form-control" id="find-key" placeholder="Key">
+  </div>
+  <button class="btn btn-primary btn-lg" id="find-go">Find</button>
+</div>
+
+<script>
+(function () {
+  var path = '/notes/';
+
+  var gobutton = $("#find-go");
+  var key = $("#find-key");
+
+  gobutton.on("click", function (e) {
+    e.preventDefault();
+    if (key.val() !== "") {
+      window.location = path + key.val();
+    }
+  });
+})();
+</script>
+

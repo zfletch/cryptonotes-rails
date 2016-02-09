@@ -1,4 +1,7 @@
 class NotesController < ApplicationController
+  def search
+  end
+
   def new
     @note = Note.new
   end
