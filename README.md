@@ -1,8 +1,8 @@
 # Cryptonotes
 
 Encrypt and share notes.
-[Try it out](https://rocky-anchorage-42139.herokuapp.com/).
-Or [view an existing note](https://rocky-anchorage-42139.herokuapp.com/notes/1e49f95d-e7ed-42f6-b0ba-d11da38fd89d)
+[Try it out](https://crypto-notes.herokuapp.com/).
+Or [view an existing note](https://crypto-notes.herokuapp.com/notes/1e49f95d-e7ed-42f6-b0ba-d11da38fd89d)
 (the password is `foo`).
 
 ## Description
