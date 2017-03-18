@@ -14,7 +14,7 @@
 
 <br>
 <div class="row">
-  <input type="password" class="form-control" id="password" placeholder="Password">
+  <input class="form-control" id="password" placeholder="Secret key">
 </div>
 <br>
 <div class="row">
@@ -23,7 +23,13 @@
 
 <div class="row">
   <%= form_for @note, url: { action: :create } do |f| %>
-    <%= f.text_field :text, maxlength: 2000, hidden: true %><br />
+    <%= f.text_field :text, maxlength: 2000, hidden: true %>
+    <div class="checkbox-inline">
+      <%= check_box_tag :delete_on_view, "1", true %>
+      <%= f.label :delete_on_view, "Delete message when it is viewed." %><br>
+    </div>
+    <br />
+    <br />
 
     <%= f.submit class: "btn btn-primary btn-lg btn-block" %>
   <% end %>

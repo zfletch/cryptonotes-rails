@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208184610) do
+ActiveRecord::Schema.define(version: 20170317234313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160208184610) do
     t.text     "text",                                     null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "view_count"
   end
 
   add_index "notes", ["uuid"], name: "index_notes_on_uuid", using: :btree

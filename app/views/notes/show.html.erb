@@ -1,10 +1,27 @@
 <% if @note %>
   <div class="row text-center">
-    <h1>Enter the Password to Show the Note</h1>
+    <h1>Enter the Secret Key to Show the Note</h1>
   </div>
+
+  <% if @note.view_count && @note.view_count == 1 %>
+    <div class="row text-center">
+      <h4>
+        This note will be deleted the next time this page is viewed.
+      </h4>
+    </div>
+  <% end %>
+
+  <% if @note.view_count && @note.view_count == 0 %>
+    <div class="row text-center">
+      <h4>
+        This note has been deleted from the database and can not be viewed in the future.
+      </h4>
+    </div>
+  <% end %>
+
   <br>
   <div class="row">
-    <input type="password" class="form-control" id="password" placeholder="Password">
+    <input class="form-control" id="password" placeholder="Secret key">
   </div>
   <br>
 
@@ -21,7 +38,9 @@
 
   <div class="row">
     <strong>Key: </strong>
-    <%= @note.uuid %>
+    <span id="note-uuid">
+      <%= @note.uuid %>
+    </span>
   </div>
 <% else %>
   <div class="row text-center">

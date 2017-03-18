@@ -1,0 +1,7 @@
+addons:
+  postgresql: "9.5"
+dist: trusty
+before_script:
+  - psql -c 'create database cryptonotes_test;' -U postgres
+  - "bundle exec rake db:migrate"
+script: xvfb-run bundle exec rspec
