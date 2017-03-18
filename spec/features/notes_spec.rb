@@ -71,6 +71,27 @@ RSpec.feature "Notes feature", type: :feature, js: true do
     expect(page).to have_content("hello world 12345")
   end
 
+  scenario "blank key" do
+    create_note(key: " ")
+
+    expect(page).to have_content("No key entered")
+    expect(page).to_not have_content("Enter the Secret Key to Show the Note")
+  end
+
+  scenario "blank message" do
+    create_note(message: "")
+
+    expect(page).to have_content("No message entered")
+    expect(page).to_not have_content("Enter the Secret Key to Show the Note")
+  end
+
+  scenario "message too long" do
+    create_note(message: "a" * 2000)
+
+    expect(page).to have_content("Encrypted text is too long")
+    expect(page).to_not have_content("Enter the Secret Key to Show the Note")
+  end
+
   private
 
   def create_note(key: "password", message: "hello world 12345", delete_message: true)

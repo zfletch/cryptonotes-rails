@@ -62,8 +62,7 @@ var decrypt = function () {
   }
 }
 
-decrypt();
-password.on("input", decrypt);
+setInterval(decrypt, 200);
 
 })();
 

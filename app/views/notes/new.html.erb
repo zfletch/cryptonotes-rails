@@ -1,12 +1,10 @@
-<% if @note.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <ul>
-      <% @note.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div id="error-container" class="alert alert-danger hidden" role="alert">
+  <ul>
+    <li id="text-too-long" class="hidden"><%= t(".text_too_long") %></li>
+    <li id="missing-key" class="hidden"><%= t(".missing_key") %></li>
+    <li id="missing-message" class="hidden"><%= t(".missing_message") %></li>
+  </ul>
+</div>
 
 <div class="text-center">
   <h1><%= t(".title") %></h1>
@@ -34,15 +32,48 @@
 
 var plaintext = $("#plaintext");
 var password = $("#password");
-
 var noteText = $("#note_text");
+var textTooLong = $("#text-too-long")
+var missingKey = $("#missing-key")
+var missingMessage = $("#missing-message");
+var errorContainer = $("#error-container");
+var form = $("#new_note");
 
 var update = function () {
-  noteText.val(sjcl.encrypt(password.val(), plaintext.val()))
+  var kval = password.val();
+  var tval = plaintext.val();
+  var errors = false;
+  var text = sjcl.encrypt(kval, tval);
+
+  errorContainer.addClass("hidden");
+  textTooLong.addClass("hidden");
+  missingKey.addClass("hidden");
+  missingMessage.addClass("hidden");
+
+  if (text.length > 2000) {
+    textTooLong.removeClass("hidden");
+    errors = true;
+  }
+
+  if (kval.trim() === '') {
+    missingKey.removeClass("hidden");
+    errors = true;
+  }
+
+  if (tval.trim() === '') {
+    missingMessage.removeClass("hidden");
+    errors = true;
+  }
+
+  if (errors) {
+    errorContainer.removeClass("hidden");
+    return false;
+  } else {
+    noteText.val(text);
+  }
 }
 
-plaintext.on("input", update);
-password.on("input", update);
+form.submit(update);
 
 })();
 </script>

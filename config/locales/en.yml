@@ -17,6 +17,9 @@ en:
       key: Secret key
       message: Secret message...
       deleteyn: Delete message when it is viewed.
+      text_too_long: Encrypted text is too long
+      missing_key: No key entered
+      missing_message: No message entered
     search:
       key: Enter Key
       find: Find
