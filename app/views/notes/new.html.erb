@@ -9,16 +9,16 @@
 <% end %>
 
 <div class="row text-center">
-  <h1>Create a New Note</h1>
+  <h1><%= t(".title") %></h1>
 </div>
 
 <br>
 <div class="row">
-  <input class="form-control" id="password" placeholder="Secret key">
+  <input class="form-control" id="password" placeholder="<%= t(".key") %>">
 </div>
 <br>
 <div class="row">
-  <textarea rows="10" class="form-control" id="plaintext" placeholder="Secret message..." maxlength: "1000"></textarea>
+  <textarea rows="10" class="form-control" id="plaintext" placeholder="<%= t(".message") %>" maxlength: "1000"></textarea>
 </div>
 
 <div class="row">
@@ -26,7 +26,7 @@
     <%= f.text_field :text, maxlength: 2000, hidden: true %>
     <div class="checkbox-inline">
       <%= check_box_tag :delete_on_view, "1", true %>
-      <%= f.label :delete_on_view, "Delete message when it is viewed." %><br>
+      <%= f.label :delete_on_view, t(".deleteyn") %><br>
     </div>
     <br />
     <br />

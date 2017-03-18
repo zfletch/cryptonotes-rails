@@ -56,6 +56,21 @@ RSpec.feature "Notes feature", type: :feature, js: true do
     expect(Note.count).to eq(count + 1)
   end
 
+  scenario "finding notes" do
+    create_note
+
+    key = find("#note-uuid").text
+    visit "/"
+    expect(page).to have_text("Encrypt and Share Notes")
+
+    fill_in("Key", with: key)
+    click_on "Find Note"
+
+    fill_in "Secret key", with: "password"
+
+    expect(page).to have_content("hello world 12345")
+  end
+
   private
 
   def create_note(key: "password", message: "hello world 12345", delete_message: true)

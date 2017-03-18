@@ -1,9 +1,9 @@
 <div class="text-center">
-  <h1>Encrypt and Share Notes</h1>
+  <h1><%= t(".title") %></h1>
   <p class="lead">
-    Enter a note, enter a secret key, share the link.<br>
-    All encryption is done client-side.
+    <%= t(".line1") %><br>
+    <%= t(".line2") %><br>
   </p>
 
-  <%= link_to "Create a new note", new_note_path, class: "btn btn-primary btn-lg" %>
+  <%= link_to t(".create"), new_note_path, class: "btn btn-primary btn-lg" %>
 </div>

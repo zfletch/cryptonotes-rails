@@ -1,27 +1,23 @@
 <% if @note %>
   <div class="row text-center">
-    <h1>Enter the Secret Key to Show the Note</h1>
+    <h1><%= t(".title") %></h1>
   </div>
 
   <% if @note.view_count && @note.view_count == 1 %>
     <div class="row text-center">
-      <h4>
-        This note will be deleted the next time this page is viewed.
-      </h4>
+      <h4><%= t(".delete1") %></h4>
     </div>
   <% end %>
 
   <% if @note.view_count && @note.view_count == 0 %>
     <div class="row text-center">
-      <h4>
-        This note has been deleted from the database and can not be viewed in the future.
-      </h4>
+      <h4><%= t(".delete2") %></h4>
     </div>
   <% end %>
 
   <br>
   <div class="row">
-    <input class="form-control" id="password" placeholder="Secret key">
+    <input class="form-control" id="password" placeholder="<%= t(".key") %>">
   </div>
   <br>
 
@@ -32,21 +28,21 @@
   <div id="plaintext" class="row jumbotron lead"></div>
 
   <div class="row">
-    <strong>Link: </strong>
+    <strong><%= t(".link") %> </strong>
     <%= link_to note_url(@note.uuid), note_path(@note.uuid) %><br>
   </div>
 
   <div class="row">
-    <strong>Key: </strong>
+    <strong><%= t(".show_key") %> </strong>
     <span id="note-uuid">
       <%= @note.uuid %>
     </span>
   </div>
 <% else %>
   <div class="row text-center">
-    <h1>Couldn't Find Your Note</h1>
+    <h1><%= t(".no_note1") %></h1>
     <p class="lead">
-    There is no note in the system with key <strong><%= params[:id] %></strong>.
+    <%= t(".no_note2") %> <strong><%= params[:id] %></strong>.
     </p>
   </div>
 <% end %>
