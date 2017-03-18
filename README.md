@@ -7,11 +7,15 @@ Or [view an existing note](https://crypto-notes.herokuapp.com/notes/1e49f95d-e7e
 
 ## Description
 
-Create notes with (or without) a password.
+Create notes with a password.
 The notes are encrypted using the [Stanford Javascript Crypto Library](https://bitwiseshiftleft.github.io/sjcl/)
 before being sent to the server.
+
 Each note is associated with a `uuid` and you can access it by visiting the path `/notes/uuid`.
 The content of the note is not visible until you enter the password it was encrypted with.
+
+If the checkbox `Delete message when it is viewed.` is checked, then the note will be deleted
+the next time it's viewed.
 
 ## How to run
 
