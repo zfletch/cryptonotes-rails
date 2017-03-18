@@ -8,32 +8,26 @@
   </div>
 <% end %>
 
-<div class="row text-center">
+<div class="text-center">
   <h1><%= t(".title") %></h1>
 </div>
 
 <br>
-<div class="row">
-  <input class="form-control" id="password" placeholder="<%= t(".key") %>">
-</div>
+<input class="form-control" id="password" placeholder="<%= t(".key") %>">
 <br>
-<div class="row">
-  <textarea rows="10" class="form-control" id="plaintext" placeholder="<%= t(".message") %>" maxlength: "1000"></textarea>
-</div>
+<textarea rows="10" class="form-control" id="plaintext" placeholder="<%= t(".message") %>" maxlength: "1000"></textarea>
 
-<div class="row">
-  <%= form_for @note, url: { action: :create } do |f| %>
-    <%= f.text_field :text, maxlength: 2000, hidden: true %>
-    <div class="checkbox-inline">
-      <%= check_box_tag :delete_on_view, "1", true %>
-      <%= f.label :delete_on_view, t(".deleteyn") %><br>
-    </div>
-    <br />
-    <br />
+<%= form_for @note, url: { action: :create } do |f| %>
+  <%= f.text_field :text, maxlength: 2000, hidden: true %>
+  <div class="checkbox-inline">
+    <%= check_box_tag :delete_on_view, "1", true %>
+    <%= f.label :delete_on_view, t(".deleteyn") %><br>
+  </div>
+  <br />
+  <br />
 
-    <%= f.submit class: "btn btn-primary btn-lg btn-block" %>
-  <% end %>
-</div>
+  <%= f.submit class: "btn btn-primary btn-lg btn-block" %>
+<% end %>
 
 <script>
 (function () {

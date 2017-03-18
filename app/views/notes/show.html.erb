@@ -1,45 +1,36 @@
 <% if @note %>
-  <div class="row text-center">
+  <div class="text-center">
     <h1><%= t(".title") %></h1>
-  </div>
 
-  <% if @note.view_count && @note.view_count == 1 %>
-    <div class="row text-center">
+    <% if @note.view_count && @note.view_count == 1 %>
       <h4><%= t(".delete1") %></h4>
-    </div>
-  <% end %>
+    <% end %>
 
-  <% if @note.view_count && @note.view_count == 0 %>
-    <div class="row text-center">
+    <% if @note.view_count && @note.view_count == 0 %>
       <h4><%= t(".delete2") %></h4>
-    </div>
-  <% end %>
+    <% end %>
+
+  </div>
 
   <br>
-  <div class="row">
-    <input class="form-control" id="password" placeholder="<%= t(".key") %>">
-  </div>
+  <input class="form-control" id="password" placeholder="<%= t(".key") %>">
   <br>
 
   <div id="encryptedtext" style="display: none;">
       <%= @note.text %>
   </div>
 
-  <div id="plaintext" class="row jumbotron lead"></div>
+  <div id="plaintext" class="jumbotron lead"></div>
 
-  <div class="row">
-    <strong><%= t(".link") %> </strong>
-    <%= link_to note_url(@note.uuid), note_path(@note.uuid) %><br>
-  </div>
+  <strong><%= t(".link") %> </strong>
+  <%= link_to note_url(@note.uuid), note_path(@note.uuid) %><br>
 
-  <div class="row">
-    <strong><%= t(".show_key") %> </strong>
-    <span id="note-uuid">
-      <%= @note.uuid %>
-    </span>
-  </div>
+  <strong><%= t(".show_key") %> </strong>
+  <span id="note-uuid">
+    <%= @note.uuid %>
+  </span>
 <% else %>
-  <div class="row text-center">
+  <div class="text-center">
     <h1><%= t(".no_note1") %></h1>
     <p class="lead">
     <%= t(".no_note2") %> <strong><%= params[:id] %></strong>.
