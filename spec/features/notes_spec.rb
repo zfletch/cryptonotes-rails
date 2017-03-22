@@ -6,14 +6,15 @@ RSpec.feature "Notes feature", type: :feature, js: true do
 
     create_note
 
-    expect(page).to have_content("Enter the Secret Key to Show the Note")
+    expect(page).to have_content("View Note")
     expect(Note.count).to eq(count + 1)
   end
 
   scenario "viewing a note" do
     create_note
 
-    visit "/notes/#{find("#note-uuid").text}"
+    find(".note-link").click
+    click_on "View"
 
     fill_in "Secret key", with: "password"
 
@@ -25,18 +26,33 @@ RSpec.feature "Notes feature", type: :feature, js: true do
 
     create_note
 
-    expect(page).to have_content("This note will be deleted the next time this page is viewed.")
+    expect(page).to have_content("This note will be deleted when it is viewed.")
     expect(Note.count).to eq(count + 1)
 
-    visit "/notes/#{find("#note-uuid").text}"
+    click_on "View"
 
     expect(page).to have_content("This note has been deleted from the database and can not be viewed in the future.")
     expect(page).to have_content("Enter the Secret Key to Show the Note")
     expect(Note.count).to eq(count)
 
-    visit "/notes/#{find("#note-uuid").text}"
-
+    visit page.current_path
     expect(page).to have_content("Couldn't Find Your Note")
+    expect(Note.count).to eq(count)
+  end
+
+  scenario "visiting the show page does not delete the note" do
+    create_note
+
+    find(".note-link").click
+    find(".note-link").click
+    find(".note-link").click
+    find(".note-link").click
+    find(".note-link").click
+
+    click_on "View"
+
+    expect(page).to have_content("This note has been deleted from the database and can not be viewed in the future.")
+    expect(page).to have_content("Enter the Secret Key to Show the Note")
   end
 
   scenario "notes that last forever" do
@@ -44,14 +60,18 @@ RSpec.feature "Notes feature", type: :feature, js: true do
 
     create_note(delete_message: false)
 
-    visit "/notes/#{find("#note-uuid").text}"
-    visit "/notes/#{find("#note-uuid").text}"
-    visit "/notes/#{find("#note-uuid").text}"
-    visit "/notes/#{find("#note-uuid").text}"
-    visit "/notes/#{find("#note-uuid").text}"
-    visit "/notes/#{find("#note-uuid").text}"
-    visit "/notes/#{find("#note-uuid").text}"
+    find(".note-link").click
+    click_on "View"
+    find(".note-link").click
+    click_on "View"
+    find(".note-link").click
+    click_on "View"
+    find(".note-link").click
+    click_on "View"
+    find(".note-link").click
+    click_on "View"
 
+    expect(page).to_not have_content("This note will be deleted when it is viewed.")
     expect(page).to have_content("Enter the Secret Key to Show the Note")
     expect(Note.count).to eq(count + 1)
   end
@@ -65,6 +85,7 @@ RSpec.feature "Notes feature", type: :feature, js: true do
 
     fill_in("Key", with: key)
     click_on "Find Note"
+    click_on "View"
 
     fill_in "Secret key", with: "password"
 

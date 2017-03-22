@@ -20,10 +20,20 @@ en:
       text_too_long: Encrypted text is too long
       missing_key: No key entered
       missing_message: No message entered
+    show:
+      title: View Note
+      line1: Click "View" to view the encrypted note.
+      line2: Or use the link below to share it.
+      delete: This note will be deleted when it is viewed.
+      submit: View
+      show_link: "Link:"
+      show_key: "Key:"
+      no_note1: Couldn't Find Your Note
+      no_note2: There is no note in the system with key
     search:
       key: Enter Key
       find: Find
-    show:
+    update:
       title: Enter the Secret Key to Show the Note
       delete1: This note will be deleted the next time this page is viewed.
       delete2: This note has been deleted from the database and can not be viewed in the future.

@@ -18,6 +18,10 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find_by(uuid: params[:id])
+  end
+
+  def update
+    @note = Note.find_by(uuid: params[:id])
 
     if @note&.view_count
       @note.update!(view_count: @note.view_count - 1)
@@ -36,7 +40,7 @@ class NotesController < ApplicationController
     @note_params = params.require(:note).permit(:text)
 
     if params.delete(:delete_on_view)
-      @note_params[:view_count] = 2
+      @note_params[:view_count] = 1
     end
 
     @note_params

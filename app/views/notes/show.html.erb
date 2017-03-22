@@ -1,69 +1,40 @@
 <% if @note %>
+
   <div class="text-center">
     <h1><%= t(".title") %></h1>
 
-    <% if @note.view_count && @note.view_count == 1 %>
-      <h4><%= t(".delete1") %></h4>
-    <% end %>
+    <p class="lead">
+      <%= t(".line1") %><br>
+      <%= t(".line2") %><br>
+    </p>
 
-    <% if @note.view_count && @note.view_count == 0 %>
-      <h4><%= t(".delete2") %></h4>
+    <%= form_for @note, url: { action: :update, method: :patch } do |f| %>
+      <%= f.hidden_field :id, value: @note.uuid %>
+      <%= f.submit t(".submit"), class: "btn btn-primary btn-lg" %>
     <% end %>
+    <br />
 
+    <div class="container">
+      <strong><%= t(".show_link") %> </strong>
+      <%= link_to note_url(@note.uuid), note_path(@note.uuid), class: "note-link" %><br>
+      <strong><%= t(".show_key") %> </strong>
+      <span id="note-uuid">
+        <%= @note.uuid %>
+      </span>
+
+      <% if @note.view_count && @note.view_count == 1 %>
+        <h4><%= t(".delete") %></h4>
+      <% end %>
+    </div>
   </div>
 
-  <br>
-  <input class="form-control" id="password" placeholder="<%= t(".key") %>">
-  <br>
-
-  <div id="encryptedtext" style="display: none;">
-      <%= @note.text %>
-  </div>
-
-  <div id="plaintext" class="jumbotron lead"></div>
-
-  <strong><%= t(".link") %> </strong>
-  <%= link_to note_url(@note.uuid), note_path(@note.uuid) %><br>
-
-  <strong><%= t(".show_key") %> </strong>
-  <span id="note-uuid">
-    <%= @note.uuid %>
-  </span>
 <% else %>
+
   <div class="text-center">
     <h1><%= t(".no_note1") %></h1>
     <p class="lead">
     <%= t(".no_note2") %> <strong><%= params[:id] %></strong>.
     </p>
   </div>
+
 <% end %>
-
-<script>
-(function () {
-
-var encryptedtext = $("#encryptedtext");
-var password = $("#password");
-var plaintext = $("#plaintext");
-
-var decrypt = function () {
-  var text;
-  var success = false;
-
-  try {
-    text = sjcl.decrypt(password.val(), encryptedtext.text());
-
-    success = true;
-  } catch (e) {
-    plaintext.text('');
-  }
-
-  if (success) {
-    plaintext.text(text);
-  }
-}
-
-setInterval(decrypt, 200);
-
-})();
-
-</script>
