@@ -1,7 +1,8 @@
 addons:
   postgresql: "9.5"
+  chrome: stable
 dist: trusty
 before_script:
-  - psql -c 'create database cryptonotes_test;' -U postgres
-  - "bundle exec rake db:migrate"
+  - "bundle exec rails db:create"
+  - "bundle exec rails db:migrate"
 script: xvfb-run bundle exec rspec
