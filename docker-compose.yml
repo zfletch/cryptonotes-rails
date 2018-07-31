@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: postgres:10.4
+    ports:
+      - 5433:5432
+  web:
+    build: .
+    command: bundle exec rails server -b '0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=""
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+    depends_on:
+      - db

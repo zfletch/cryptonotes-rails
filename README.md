@@ -36,8 +36,6 @@ or
 ### Running application
 
 ```
-$ git clone https://github.com/zfletch/cryptonotes-rails
-$ cd cryptonotes-rails/
 $ bundle install
 $ yarn install
 $ bundle exec rails db:create
@@ -45,8 +43,23 @@ $ bundle exec rails db:migrate
 $ bundle exec rails server
 ```
 
+or
+
+```
+docker-compose build
+docker-compose run web rails db:create
+docker-compose run web rails db:migrate
+docker-compose up
+```
+
 ### Running tests
 
 ```
 $ bundle exec rspec
+```
+
+or
+
+```
+ocker-compose run web rspec
 ```
