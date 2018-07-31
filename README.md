@@ -21,7 +21,7 @@ the next time it's viewed.
 
 ### Requirements
 
-* `ruby 2.3.3`
+* `ruby 2.5.1`
 * `chromedriver`
 
 ### Instructions
