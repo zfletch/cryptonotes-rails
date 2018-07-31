@@ -8,8 +8,9 @@ Or [view an existing note](https://crypto-notes.herokuapp.com/notes/1e49f95d-e7e
 ## Description
 
 Create notes with a password.
-The notes are encrypted using the [Stanford Javascript Crypto Library](https://bitwiseshiftleft.github.io/sjcl/)
-before being sent to the server.
+All notes are encrypted and decrypted entirely on the client side
+using the [Stanford Javascript Crypto Library](https://bitwiseshiftleft.github.io/sjcl/).
+The server only ever sees the encrypted message.
 
 Each note is associated with a `uuid` and you can access it by visiting the path `/notes/uuid`.
 The content of the note is not visible until you enter the password it was encrypted with.
@@ -21,10 +22,16 @@ the next time it's viewed.
 
 ### Requirements
 
-* `ruby ~> 2.5`
-* `node ~> 10.5`
-* `yarn ~> 1.9`
-* `chromedriver ~> 2.41`
+* `ruby ~> 2.5.1`
+* `node ~> 10.5.0`
+* `yarn ~> 1.9.2`
+* `postgres ~> 10.4`
+* `chromedriver ~> 2.41` (for running tests)
+
+or
+
+* `docker ~> 18.06.0`
+* `docker-compose ~> 1.22.0`
 
 ### Running application
 
