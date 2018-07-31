@@ -21,16 +21,25 @@ the next time it's viewed.
 
 ### Requirements
 
-* `ruby 2.5.1`
-* `chromedriver`
+* `ruby ~> 2.5`
+* `node ~> 10.5`
+* `yarn ~> 1.9`
+* `chromedriver ~> 2.41`
 
-### Instructions
+### Running application
 
 ```
 $ git clone https://github.com/zfletch/cryptonotes-rails
 $ cd cryptonotes-rails/
 $ bundle install
-$ bundle exec rake db:create
-$ bundle exec rake db:migrate
+$ yarn install
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
 $ bundle exec rails server
+```
+
+### Running tests
+
+```
+$ bundle exec rspec
 ```

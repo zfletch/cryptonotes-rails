@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//
-// Bower packages
 //= require sjcl/sjcl
 //
 //= require_tree .

@@ -2,30 +2,26 @@ source 'https://rubygems.org'
 ruby '2.5.1'
 
 gem 'rails', '~> 5.2'
-gem 'pg'
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
-gem 'bootstrap-sass'
-gem 'puma'
 gem 'bootsnap'
-
+gem 'bootstrap-sass'
+gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'pg'
+gem 'puma'
+gem 'sass-rails'
 gem 'turbolinks'
-gem 'jbuilder'
-
-gem 'bower-rails'
+gem 'uglifier'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'byebug'
   gem 'capybara'
   gem 'capybara-selenium'
-  gem 'byebug'
-  gem 'pry-rails'
   gem 'listen'
+  gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
-  gem 'web-console'
   gem 'spring'
+  gem 'web-console'
 end
