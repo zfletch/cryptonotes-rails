@@ -22,10 +22,16 @@ the next time it's viewed.
 
 ### Requirements
 
-* `ruby ~> 2.5`
-* `node ~> 10.5`
-* `yarn ~> 1.9`
+* `ruby ~> 2.5.1`
+* `node ~> 10.5.0`
+* `yarn ~> 1.9.2`
+* `postgres ~> 10.4`
 * `chromedriver ~> 2.41` (for running tests)
+
+or
+
+* `docker ~> 18.06.0`
+* `docker-compose ~> 1.22.0`
 
 ### Running application
 

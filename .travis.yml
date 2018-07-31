@@ -1,8 +1,15 @@
+language: ruby
+services:
+    - postgresql
 addons:
   postgresql: "9.5"
-  chrome: stable
-dist: trusty
+  apt:
+    packages:
+      - google-chrome-stable
+      - chromium-chromedriver
 before_script:
+  - "ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver"
+  - "yarn install"
   - "bundle exec rails db:create"
   - "bundle exec rails db:migrate"
-script: xvfb-run bundle exec rspec
+script: bundle exec rspec
