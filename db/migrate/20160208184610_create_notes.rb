@@ -1,4 +1,4 @@
-class CreateNotes < ActiveRecord::Migration
+class CreateNotes < ActiveRecord::Migration[5.2]
   def change
     create_table :notes do |t|
       t.uuid :uuid, index: true, null: false, default: 'gen_random_uuid()'
