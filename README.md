@@ -19,10 +19,18 @@ the next time it's viewed.
 
 ## How to run
 
+### Requirements
+
+* `ruby 2.3.3`
+* `chromedriver`
+
+### Instructions
+
 ```
 $ git clone https://github.com/zfletch/cryptonotes-rails
 $ cd cryptonotes-rails/
 $ bundle install
+$ bundle exec rake db:create
 $ bundle exec rake db:migrate
 $ bundle exec rails server
 ```
