@@ -36,7 +36,7 @@ RSpec.feature "Notes feature", type: :feature, js: true do
     expect(Note.count).to eq(count)
 
     visit page.current_path
-    expect(page).to have_content("Couldn't Find Your Note")
+    expect(page).to have_content("Can't Find Your Note")
     expect(Note.count).to eq(count)
   end
 

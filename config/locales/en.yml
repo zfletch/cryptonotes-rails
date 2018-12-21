@@ -28,7 +28,7 @@ en:
       submit: View
       show_link: "Link:"
       show_key: "Key:"
-      no_note1: Couldn't Find Your Note
+      no_note1: Can't Find Your Note
       no_note2: There is no note in the system with key
     search:
       key: Enter Key
@@ -40,5 +40,5 @@ en:
       key: Secret key
       show_link: "Link:"
       show_key: "Key:"
-      no_note1: Couldn't Find Your Note
+      no_note1: Can't Find Your Note
       no_note2: There is no note in the system with key
