@@ -61,5 +61,5 @@ $ bundle exec rspec
 or
 
 ```
-ocker-compose run web rspec
+docker-compose run web rspec
 ```
