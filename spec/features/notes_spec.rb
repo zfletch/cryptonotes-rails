@@ -8,6 +8,7 @@ RSpec.feature "Notes feature", type: :feature, js: true do
 
     expect(page).to have_content("View Note")
     expect(Note.count).to eq(count + 1)
+    expect(Note.last.text).to_not eq("hello world 12345")
   end
 
   scenario "viewing a note" do
