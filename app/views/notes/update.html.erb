@@ -59,7 +59,7 @@ var decrypt = function () {
     plaintext.text('');
   }
 
-  if (success) {
+  if (success && plaintext.text() !== text) {
     plaintext.text(text);
   }
 }
