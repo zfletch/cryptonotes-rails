@@ -1,0 +1,57 @@
+name: Run tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:12
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_HOST: 127.0.0.1
+      DATABASE_PORT: 5432
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.5
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 10.5
+
+      - name: Install system dependencies
+        run: sudo apt-get install -y chromium-chromedriver
+
+      - name: Install bundler
+        run: gem install bundler
+
+      - name: Install Ruby dependencies
+        run: bundle install --local
+
+      - name: Install JavaScript dependencies
+        run: yarn install
+
+      - name: Set up database
+        run: bundle exec rake db:{create,migrate}
+
+      - name: Run tests
+        run: bundle exec rspec
+
+      # - name: Lint code
+      #   run: bundle exec rubocop
+
+      # - name: Audit code
+      #   run: bundle exec bundler-audit check --update
