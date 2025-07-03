@@ -24,7 +24,7 @@ the next time it's viewed.
 * `yarn ~> 1.22.22`
 * `postgres ~> 14.17`
 
-### Running application
+### Running the application
 
 ```
 $ bundle install
@@ -42,6 +42,9 @@ docker-compose run web rails db:create
 docker-compose run web rails db:migrate
 docker-compose up
 ```
+
+Replace `docker-compose` with `podman compose` or whatever program you'd like
+to use.
 
 ### Running tests
 

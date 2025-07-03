@@ -1,7 +1,9 @@
-version: '3'
 services:
   db:
-    image: postgres:10.4
+    image: postgres:14.17
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     ports:
       - 5433:5432
   web:
@@ -13,7 +15,7 @@ services:
       - 3000:3000
     environment:
       - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=""
+      - DATABASE_PASSWORD=password
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
     depends_on:
