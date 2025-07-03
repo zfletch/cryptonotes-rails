@@ -1,0 +1,20 @@
+inherit_gem:
+  zfletch-style:
+    - rubocop/rubocop_rails.yml
+
+plugins:
+  - rubocop-capybara
+  - rubocop-rspec
+  - rubocop-rspec_rails
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 15
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
