@@ -17,6 +17,7 @@ RUN yarn install
 ADD . /app
 
 ENV RAILS_ENV=production
+ENV SECRET_KEY_BASE_DUMMY=1
 RUN bundle exec rails assets:precompile
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
